@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
                 MediaPlayer background  = MediaPlayer.create(SplashScreen.this,R.raw.trololol);
                 background.setLooping(true);
                 background.start();
-                Intent splash = new Intent(SplashScreen.this,MainActivity.class);
+                Intent splash = new Intent(SplashScreen.this,MainMenu.class);
                 startActivity(splash);
                 finish();
             }

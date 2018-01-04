@@ -20,13 +20,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BugtongActivity"
+            android:name=".TrollActivity"
             android:label="Troll Quiz" />
         <activity
             android:name=".TallyActivity"
             android:label="Tally of Scores" />
-        <activity android:name=".MainActivity"
-                  android:label="Login"/>
+        <activity
+            android:name=".MainMenu"
+            android:label="Login" />
+        <activity
+            android:name=".About"
+            android:label="About the Programmer"/>
     </application>
 
 </manifest>

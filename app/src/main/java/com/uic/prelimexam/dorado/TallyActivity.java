@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,13 +11,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class TallyActivity extends AppCompatActivity {
 
-    Button button_playAgain, button_changeUsername;
+    Button button_playAgain, button_changeUsername,button_clear;
     ListView listView_tally;
+    TrollActivity repeat;
 
     DatabaseHelper databaseHelper;
 
@@ -31,30 +32,46 @@ public class TallyActivity extends AppCompatActivity {
 
         button_playAgain = (Button) findViewById(com.uic.prelimexam.dorado.R.id.button_playagain);
         button_changeUsername = (Button) findViewById(com.uic.prelimexam.dorado.R.id.button_changeusername);
+        button_clear = (Button) findViewById(com.uic.prelimexam.dorado.R.id.button_clear);
+
 
         listView_tally = (ListView) findViewById(com.uic.prelimexam.dorado.R.id.listView_tally);
         databaseHelper = new DatabaseHelper(this);
         populateListView();
 
-        String currentUsername = uicGetSharedPreferenceValue("userInfo", "username");
+        final String currentUsername = uicGetSharedPreferenceValue("userInfo", "username");
         button_playAgain.setText("PLAY AGAIN " + currentUsername);
 
-        Bugtong.SCORE = 50;
-        Bugtong.questionShown = 0;
+        TrollQuiz.SCORE = 50;
+        TrollQuiz.questionShown = 0;
 
         button_playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TallyActivity.this, BugtongActivity.class));
+                if(currentUsername == ""){
+                    uicToastMessage("Change Username First");
+                }
+                else {
+                    startActivity(new Intent(TallyActivity.this, TrollActivity.class));
+                }
             }
         });
 
         button_changeUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TallyActivity.this, MainActivity.class));
+                startActivity(new Intent(TallyActivity.this, MainMenu.class));
             }
         });
+
+        button_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseHelper.deleteScores();
+                startActivity(new Intent(TallyActivity.this,TallyActivity.class));
+            }
+        });
+
     }
 
     public void populateListView(){
@@ -72,5 +89,9 @@ public class TallyActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
         String value = sharedPreferences.getString(key, "");
         return value;
+    }
+
+    public void uicToastMessage(String message){
+        Toast.makeText(this, message ,Toast.LENGTH_SHORT).show();
     }
 }

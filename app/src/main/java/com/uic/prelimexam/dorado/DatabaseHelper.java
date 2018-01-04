@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String TABLE_NAME = "bugtong_tally_table";
+    private static final String TABLE_NAME = "trollquiz_tallytable";
     private static final String COL1 = "ID";
     private static final String COL2 = "username";
     private static final String COL3 = "score";
@@ -23,6 +23,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
     }
 
+    public void deleteScores(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String deleteData ="DELETE FROM " + TABLE_NAME;
+        db.execSQL(deleteData);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -34,6 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, username);
         contentValues.put(COL3, score);
+
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -60,10 +67,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+
     public String isUserExists(String username, int score){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL1 + " FROM " + TABLE_NAME +
-                " WHERE " + COL2 + " = '" + username +"' AND score='"+score+"'";
+                " WHERE " + COL2 + " = '" + username +"'";
         Cursor data = db.rawQuery(query, null);
 
         String d = "";
@@ -72,6 +80,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return d;
     }
+
+
 
     public void updateScore(int id, int newScore){
         SQLiteDatabase db = this.getWritableDatabase();
