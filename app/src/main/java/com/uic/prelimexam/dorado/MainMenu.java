@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,9 +15,9 @@ import android.widget.Toast;
 
 public class MainMenu extends AppCompatActivity {
 
-    EditText editText_username;
+    public static EditText editText_username;
     Button button_start, button_tally, button_about;
-    String name;
+    public static String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class MainMenu extends AppCompatActivity {
         button_tally.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(MainMenu.this, TallyActivity.class));
             }
         });
@@ -64,6 +66,7 @@ public class MainMenu extends AppCompatActivity {
         button_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(MainMenu.this, About.class));
             }
         });

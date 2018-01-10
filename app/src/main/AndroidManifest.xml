@@ -30,7 +30,11 @@
             android:label="Login" />
         <activity
             android:name=".About"
-            android:label="About the Programmer"/>
+            android:label="About the Programmer" />
+        <activity android:name=".Noob" />
+        <activity android:name=".Averaged" />
+        <activity android:name=".God" />
+        <activity android:name=".MLG"></activity>
     </application>
 
 </manifest>

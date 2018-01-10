@@ -20,6 +20,8 @@ public class TallyActivity extends AppCompatActivity {
     Button button_playAgain, button_changeUsername,button_clear;
     ListView listView_tally;
     TrollActivity repeat;
+    TrollActivity trollActivity = new TrollActivity();
+    MainMenu menu = new MainMenu();
 
     DatabaseHelper databaseHelper;
 
@@ -42,7 +44,7 @@ public class TallyActivity extends AppCompatActivity {
         final String currentUsername = uicGetSharedPreferenceValue("userInfo", "username");
         button_playAgain.setText("PLAY AGAIN " + currentUsername);
 
-        TrollQuiz.SCORE = 50;
+//      TrollQuiz.SCORE = 50;
         TrollQuiz.questionShown = 0;
 
         button_playAgain.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +56,8 @@ public class TallyActivity extends AppCompatActivity {
                 else {
                     startActivity(new Intent(TallyActivity.this, TrollActivity.class));
                 }
+                TrollQuiz.answered = 0;
+                TrollQuiz.questionAnswered = 0;
             }
         });
 
@@ -61,6 +65,10 @@ public class TallyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TallyActivity.this, MainMenu.class));
+                TrollQuiz.answered = 0;
+                TrollQuiz.questionAnswered = 0;
+                menu.editText_username.setText("");
+                MainMenu.name = "";
             }
         });
 

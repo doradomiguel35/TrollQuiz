@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/editText_question"
-        android:layout_width="360dp"
-        android:layout_height="81dp"
+        android:layout_width="323dp"
+        android:layout_height="121dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
@@ -31,7 +31,7 @@
         android:id="@+id/textView_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="60dp"
         android:text="30"
         android:textAlignment="center"
         android:textSize="50sp"
@@ -39,21 +39,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView_score"
+        android:id="@+id/textView_questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="8dp"
-        android:text="50"
+        android:text="/50"
         android:textAlignment="center"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
-        app:layout_constraintStart_toEndOf="@+id/textView_time"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button_A"
@@ -110,10 +107,10 @@
         android:text="STOP"
         app:layout_constraintBottom_toTopOf="@+id/textView_currentUsername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_question"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/textView2"
@@ -121,24 +118,31 @@
         android:layout_height="17dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:text="Time"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/textView_time"
         app:layout_constraintEnd_toEndOf="@+id/textView_time"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_currentUsername"
+        app:layout_constraintVertical_bias="0.384" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
+        android:layout_width="85dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="35dp"
-        android:text="Score"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Answered"
+        app:layout_constraintBottom_toTopOf="@+id/textView_answered"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.221"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
+        app:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_currentUsername"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView_currentUsername"
@@ -146,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="52dp"
         android:text="Username"
         android:textSize="30sp"
         android:textStyle="bold|italic"
@@ -154,5 +158,21 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_question" />
+
+    <TextView
+        android:id="@+id/textView_answered"
+        android:layout_width="58dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="0"
+        android:textAlignment="viewEnd"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_A"
+        app:layout_constraintEnd_toStartOf="@+id/textView_questions"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView_time"
+        app:layout_constraintTop_toBottomOf="@+id/textView_currentUsername"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
