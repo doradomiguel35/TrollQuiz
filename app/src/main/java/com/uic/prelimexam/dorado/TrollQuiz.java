@@ -5,12 +5,13 @@ public class TrollQuiz {
     public String choices[][];
     public String answer[];
 
-    public final int MAX_SIZE = 50;          //Array maximum size
-    public final int TOTAL_SIZE = 50;        //Total questions set for the user
+    public final int MAX_SIZE = 51;          //Array maximum size
+    public final int TOTAL_SIZE = 51;        //Total questions set for the user
     public static int questionShown = 0;    //Counter for total questions being shown to the user
 //    public static int SCORE = 50;
     public static int answered = 0;
-    public static int questionAnswered = 0;  /*Scoring Rule:
+    public static int items = 0;
+    public static int questionAnswered = 0; /*Scoring Rule:
                                               if correct score => sum of current score and timeremaining multiplied by 10
                                                 else score => difference of current score and 10
                                                 note: timeremaining is in seconds.
@@ -54,6 +55,13 @@ public class TrollQuiz {
         choices[4][2] = "C. Facebook";
         choices[4][3] = "D. Twitter";
         answer[4] = "A";
+
+//        bugtong[5] = "";
+//        choices[5][0] = "Quiz Over";
+//        choices[5][1] = "Quiz Over";
+//        choices[5][2] = "Quiz Over";
+//        choices[5][3] = "Quiz Over";
+//        answer[5] = "A";
 
         bugtong[5] = "O ____";
         choices[5][0] = "A. SRSLY?";
@@ -154,12 +162,12 @@ public class TrollQuiz {
         choices[17][3] = "D. Internet Grandma Dances";
         answer[17] = "C";
 
-        bugtong[18] = "What is \"Grandma Finds the Internet\" also known as?";
-        choices[18][0] = "A. Internet Grandpa Surprise";
-        choices[18][1] = "B. Internet Grandma Rockstar";
-        choices[18][2] = "C. Internet Grandma Surprise";
-        choices[18][3] = "D. Internet Grandma Dances";
-        answer[18] = "C";
+        bugtong[18] = "What does Troll not ask?";
+        choices[18][0] = "A. you mad?";
+        choices[18][1] = "B. had a problem?";
+        choices[18][2] = "C. you made bruh?";
+        choices[18][3] = "D. GTFO";
+        answer[18] = "A";
 
         bugtong[19] = "The concept of anti-jokes found in \"Anti-Joke Chicken\" is a modern concept.";
         choices[19][0] = "A. True";
@@ -378,19 +386,21 @@ public class TrollQuiz {
         choices[48][3] = "21?";
         answer[48] = "A";
 
-        bugtong[49] = "";
-        choices[49][0] = "Quiz Over";
-        choices[49][1] = "Quiz Over";
-        choices[49][2] = "Quiz Over";
-        choices[49][3] = "Quiz Over";
+        bugtong[49] = "Rage Guy says what?";
+        choices[49][0] = "FFFFFFFUUUUUU";
+        choices[49][1] = "AAAARRRRRGGGG!!!!!";
+        choices[49][2] = "I hate you.";
+        choices[49][3] = "SHHIIIIITTTT";
         answer[49] = "A";
 
-//        bugtong[5] = "";
-//        choices[5][0] = "Quiz Over";
-//        choices[5][1] = "Quiz Over";
-//        choices[5][2] = "Quiz Over";
-//        choices[5][3] = "Quiz Over";
-//        answer[5] = "A";
+        bugtong[50] = "";
+        choices[50][0] = "Quiz Over";
+        choices[50][1] = "Quiz Over";
+        choices[50][2] = "Quiz Over";
+        choices[50][3] = "Quiz Over";
+        answer[50] = "A";
+
+
 
 
     }

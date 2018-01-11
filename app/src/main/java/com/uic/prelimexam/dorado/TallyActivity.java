@@ -86,7 +86,7 @@ public class TallyActivity extends AppCompatActivity {
         Cursor data = databaseHelper.getData();
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()){
-            listData.add(data.getString(2) + " - " + data.getString(1));
+            listData.add(data.getString(1) + " - " + data.getString(2)+"/50");
         }
 
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);

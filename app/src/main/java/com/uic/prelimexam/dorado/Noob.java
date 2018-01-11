@@ -26,7 +26,6 @@ public class Noob extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goToTally = new Intent(Noob.this,TallyActivity.class);
                 startActivity(goToTally);
-                finish();
             }
         });
     }

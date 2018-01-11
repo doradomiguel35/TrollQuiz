@@ -12,8 +12,8 @@
         android:layout_width="323dp"
         android:layout_height="121dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:enabled="false"
         android:gravity="top"
@@ -31,7 +31,7 @@
         android:id="@+id/textView_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="28dp"
         android:text="30"
         android:textAlignment="center"
         android:textSize="50sp"
@@ -42,7 +42,7 @@
         android:id="@+id/textView_questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:text="/50"
         android:textAlignment="center"
@@ -101,21 +101,18 @@
         android:layout_width="108dp"
         android:layout_height="44dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="4dp"
         android:text="STOP"
         app:layout_constraintBottom_toTopOf="@+id/textView_currentUsername"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_question"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="58dp"
-        android:layout_height="17dp"
+        android:layout_width="60dp"
+        android:layout_height="24dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
@@ -126,7 +123,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_currentUsername"
-        app:layout_constraintVertical_bias="0.384" />
+        app:layout_constraintVertical_bias="0.272" />
 
     <TextView
         android:id="@+id/textView3"
@@ -136,13 +133,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Answered"
+        android:text="Correct"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/textView_answered"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintHorizontal_bias="0.859"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView_currentUsername"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/textView_currentUsername"
@@ -174,5 +172,21 @@
         app:layout_constraintStart_toEndOf="@+id/textView_time"
         app:layout_constraintTop_toBottomOf="@+id/textView_currentUsername"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtView_items"
+        android:layout_width="83dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="0/50"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_currentUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button_stop"
+        app:layout_constraintTop_toTopOf="@+id/button_stop"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

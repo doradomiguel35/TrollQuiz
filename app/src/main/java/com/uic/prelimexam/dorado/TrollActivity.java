@@ -17,10 +17,11 @@ import android.widget.Toast;
 public class TrollActivity extends AppCompatActivity {
 
     Button button_stop, button_A, button_B, button_C, button_D;
-    TextView textView_time, textView_currentUsername, textView_questions,textView_answered;
+    TextView textView_time, textView_currentUsername, textView_questions,textView_answered,textView_items;
     EditText editText_question;
+    int items = TrollQuiz.items;
     int intID;
-    int repetition;
+
 
     DatabaseHelper databaseHelper;
     public static String currentUsername;
@@ -39,6 +40,7 @@ public class TrollActivity extends AppCompatActivity {
         textView_currentUsername = (TextView) findViewById(com.uic.prelimexam.dorado.R.id.textView_currentUsername);
         textView_questions = (TextView) findViewById(com.uic.prelimexam.dorado.R.id.textView_questions);
         textView_answered = (TextView) findViewById(com.uic.prelimexam.dorado.R.id.textView_answered);
+        textView_items = (TextView) findViewById(com.uic.prelimexam.dorado.R.id.txtView_items);
         editText_question = (EditText) findViewById(com.uic.prelimexam.dorado.R.id.editText_question);
         button_A = (Button) findViewById(com.uic.prelimexam.dorado.R.id.button_A);
         button_B = (Button) findViewById(com.uic.prelimexam.dorado.R.id.button_B);
@@ -66,6 +68,7 @@ public class TrollActivity extends AppCompatActivity {
             }
         });
 
+        textView_items.setText(items+"/50");
         textView_questions.setText("/50");
         textView_answered.setText(""+ TrollQuiz.answered++);
 
@@ -97,8 +100,6 @@ public class TrollActivity extends AppCompatActivity {
                 checkUserAnswer("D");
             }
         });
-
-
     }
 
     public void generateBugtong(){
@@ -110,7 +111,9 @@ public class TrollActivity extends AppCompatActivity {
         button_D.setText(trollQuiz.getChoices(currentIndex,3));
         if(TrollQuiz.questionAnswered>=(trollQuiz.TOTAL_SIZE-1)){
             saveUserData();
-        }else{
+        }
+
+        else{
             TrollQuiz.questionAnswered++;
         }
     }
@@ -121,10 +124,16 @@ public class TrollActivity extends AppCompatActivity {
         if(trollQuiz.answer[currentIndex-1].equalsIgnoreCase(choice)){
             MediaPlayer correct  = MediaPlayer.create(TrollActivity.this,R.raw.correct);
             correct.start();
+            items++;
+            textView_items.setText(items+"/50");
             setAnswerCorrect();
-        }else{
+        }
+
+        else{
             MediaPlayer incorrect  = MediaPlayer.create(TrollActivity.this,R.raw.incorrect);
             incorrect.start();
+            items++;
+            textView_items.setText(items+"/50");
             generateBugtong();
         }
 //        textView_score.setText(TrollQuiz.SCORE+"");
@@ -132,7 +141,6 @@ public class TrollActivity extends AppCompatActivity {
 
     public void setAnswerCorrect(){
         textView_answered.setText(""+TrollQuiz.answered++);
-        uicToastMessage("Correct");
 //        TrollQuiz.SCORE += (10 * (int) remainingSeconds);
         generateBugtong();
 
@@ -157,39 +165,65 @@ public class TrollActivity extends AppCompatActivity {
             databaseHelper.updateScore(intID,TrollQuiz.answered);
 //            uicToastMessage("Score updated");
 //            startActivity(new Intent(TrollActivity.this, TallyActivity.class));
-            if(answered <= 10){
+            if(answered <= 19){
                 startActivity(new Intent(TrollActivity.this, Noob.class));
             }
 
-            else if(answered > 10 && answered <= 40){
+            else if(answered > 19 && answered <= 39){
                 startActivity(new Intent(TrollActivity.this,Averaged.class));
             }
 
-            else if(answered > 40 && answered <=50){
+            else if(answered > 39 && answered <=50){
                 startActivity(new Intent(TrollActivity.this,MLG.class));
             }
+
+//            if(answered <= 2){
+//
+//                startActivity(new Intent(TrollActivity.this, Noob.class));
+//            }
+//
+//            else if(answered > 2 && answered == 3){
+//                startActivity(new Intent(TrollActivity.this,Averaged.class));
+//            }
+//
+//            else if(answered > 3 && answered <= 5){
+//                startActivity(new Intent(TrollActivity.this,MLG.class));
+//            }
+
         }
 
     }
 
     public void addtoTally(){
         int answered = TrollQuiz.answered;
-        MediaPlayer stop = new MediaPlayer();
         boolean insertData = databaseHelper.addData(currentUsername, TrollQuiz.answered);
         if (insertData) {
             timer.cancel();
-            if(answered <=2){
-                stop.stop();
+            if(answered <= 19){
+
                 startActivity(new Intent(TrollActivity.this, Noob.class));
             }
 
-            else if(answered > 10 && answered <= 40){
+            else if(answered > 19 && answered <= 39){
                 startActivity(new Intent(TrollActivity.this,Averaged.class));
             }
 
-            else if(answered > 40 && answered <= 50){
-                startActivity(new Intent(TrollActivity.this,MLG.class));
+            else if(answered > 19 && answered <= 39){
+                startActivity(new Intent(TrollActivity.this,Averaged.class));
             }
+
+//            if(answered <= 2){
+//
+//                startActivity(new Intent(TrollActivity.this, Noob.class));
+//            }
+//
+//            else if(answered > 2 && answered == 3){
+//                startActivity(new Intent(TrollActivity.this,Averaged.class));
+//            }
+//
+//            else if(answered > 3 && answered <= 5){
+//                startActivity(new Intent(TrollActivity.this,MLG.class));
+//            }
 //            startActivity(new Intent(TrollActivity.this, TallyActivity.class));
         } else {
             uicToastMessage("Something wrong in your database!");
